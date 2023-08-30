@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Clock.png" />
+    <None Remove="Dice.png" />
+    <None Remove="Dices.png" />
+    <None Remove="img_setting.png" />
+    <None Remove="Menu.png" />
+    <None Remove="Menu2.png" />
+    <None Remove="tg_button_mouseOver.png" />
+   
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Clock.png" />
+    <Resource Include="Dice.png" />
+    <Resource Include="Dices.png" />
+    <Resource Include="img_setting.png" />
+    <Resource Include="Menu.png" />
+    <Resource Include="Menu2.png" />
+    <Resource Include="tg_button_mouseOver.png" />
+   
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="assets\" />
+    <Folder Include="fonts\" />
+  </ItemGroup>
+
+</Project>
