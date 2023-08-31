@@ -14,9 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+
 using System.Timers;
 using System.Threading;
 using System.Threading.Tasks;
+
 
 
 namespace SWSU_Randomizer
@@ -88,6 +90,7 @@ namespace SWSU_Randomizer
                     }
                     else
                     {
+
                         //Таймер на 7 секунд
                         var timerstate = new TimerState { Counter = 0 };
 
@@ -104,13 +107,7 @@ namespace SWSU_Randomizer
 
                             Random rnd = new Random();
                             timer.Start();
-                           
-                        
-                        
 
-                          
-
-                        
                         //Random rnd = new Random();
                         //int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
                         //TextBlockRandom.Text=($"{value}");
@@ -122,19 +119,19 @@ namespace SWSU_Randomizer
                        
                         Start_button.Content= "Старт";
                         timer.Stop();
+
                         //MessageBox.Show($"Выбрано число: {TextBlockRandom.Text} ");
+
                     }
                     break;
             }
-           
-            
-             
            
 
         }
         Random rnd = new Random();
         private void timer_Tick(object sender, EventArgs e)
         {
+
             
                 Random rnd = new Random();
                 int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
@@ -143,12 +140,15 @@ namespace SWSU_Randomizer
         }
 
 
+
         public void Roll(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
             int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
             TextBlockRandom.Text=($"{value}");
+
         }
+
             //int increment = 1;
             //increment++;
             //if(increment >= 250)
@@ -162,6 +162,7 @@ namespace SWSU_Randomizer
         {
             public int Counter;
         }
+
 
     }
     }
