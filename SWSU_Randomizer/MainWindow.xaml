@@ -4,7 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SWSU_Randomizer"
+        
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         mc:Ignorable="d"
+		UseLayoutRounding="True"
+		SnapsToDevicePixels="True"
+        
         Title="Randomizer" Height="450" Width="800" Background="#FFFF8E63" BorderBrush="Black" Foreground="Black" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Icon="/Dices.png"
         ResizeMode="CanResize" Topmost="True">
     <Window.Style>
@@ -97,23 +102,73 @@
 
     </Window.Resources>
     <Grid x:Name="Main" Background="#FF272727">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
         <!--Главное окно приложения-->
-        <Grid x:Name="RandomizerGrid" Margin="81,0,0,0">
-            <TextBlock x:Name="Randomizer_Textblock" Margin="145,0,145,385" TextWrapping="Wrap" Text="Введите диапазон чисел" Height="49" FontSize="48" Foreground="White"/>
+        <!--<Grid x:Name="RandomizerGrid" Margin="81,0,0,0" Grid.RowSpan="2">
+            <Grid Style="{DynamicResource WhiteGrid}" Background="#FF2B0808" Grid.Row=">
+                
+            </Grid>
 
-            <Grid
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
 
-                <Path Style="{StaticResource }"/>
 
+
+        </Grid>-->
+        <GridSplitter Grid.Row="1" ShowsPreview="False" Height="3" Foreground="#FF189E2D" 
+                      BorderBrush="#FF53BD2F"
+                      HorizontalAlignment="Stretch"  Grid.ColumnSpan="2"></GridSplitter>
+        <Grid x:Name="topTimer" Background="#FF2B0C0C" Margin="81,0,0,0">
+            <TextBlock x:Name="Randomizer_Textblock" TextWrapping="Wrap" Text="Введите диапазон чисел" FontSize="36" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <!--Круговой progress bar-->
+        </Grid>
+
+        <Grid  Margin="81,4,0,0" Grid.Row="1" Grid.ColumnSpan="1" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+
+
+        </Grid>
+        <Grid x:Name="EnterValuesField" Grid.Row="2"
+              Grid.ColumnSpan="1"
+              Background="#FF0A5F1B" Margin="81,0,0,0" >
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300">
+
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="99*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,30,0" MinHeight="60" >
+                    <!--Первая область с вводом числа-->
+                    <Grid DockPanel.Dock="Left" Background="#FF9C6E37">
+                        <TextBlock Text="Введите начало диапазона" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="0,20,0,10"/>
+                    </Grid>
+                    <!--Область с кнопкой рассчета-->
+                    <Grid HorizontalAlignment="Center" DockPanel.Dock="Left" Background="#FF3DB38A" Margin="20,0,0,0">
+                        
+<Button x:Name="Start_button" Content="Определить" HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom"
+                IsEnabled="False" Margin="10,0,10,10" Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid DockPanel.Dock="Right" Background="#FF9045C7" Margin="20,0,0,0">
+                        <TextBlock Text="Введите начало диапазона" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="0,0,0,10"/>
+                    </Grid>
+
+                </DockPanel>
             </Grid>
 
         </Grid>
 
 
         <!--Окно навигации-->
-        <Grid x:Name="NavPnl" HorizontalAlignment="Left" MinWidth="60" Background="#FF3E3E3E" Width="81">
+        <Grid x:Name="NavPnl" HorizontalAlignment="Left" MinWidth="60" Background="#FF3E3E3E" Width="81" Grid.RowSpan="3">
             <StackPanel x:Name="st_panel">
                 <Grid MinHeight="80" >
 
@@ -199,7 +254,7 @@
 
                         <StackPanel x:Name="dice_icon" Orientation="Horizontal"
                                     Width="230" MinHeight="70">
-                            <Image Source="/Dice.png" Stretch="None" MinWidth="60" MinHeight="60" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+                            <Image Source="/Dice.png" Stretch="None" MinWidth="60" MinHeight="60" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,0,0,0"/>
                             <TextBlock Text="Рандомайзер" Margin="10,0,0,0"
                                        Style="{StaticResource font_style}"/>
 
@@ -220,7 +275,7 @@
 
                         <StackPanel x:Name="history_icon" Orientation="Horizontal"
                                     Width="230" MinHeight="70">
-                            <Image Source="/Clock.png" Stretch="None" MinWidth="60" MinHeight="60"/>
+                            <Image Source="/Clock.png" Stretch="None" MinWidth="60" MinHeight="60" RenderTransformOrigin="0.558,-0.214" Height="30" Margin="0,-15,0,0"/>
                             <TextBlock Text="История" Margin="10,0,0,0"
                                        Style="{StaticResource font_style}"/>
 
@@ -241,7 +296,7 @@
 
                         <StackPanel x:Name="settings_icon" Orientation="Horizontal"
                                     Width="282"  MinHeight="60">
-                            <Image Source="/img_setting.png" Margin="0,0,0,0" Stretch="None" MinHeight="60" MinWidth="60"/>
+                            <Image Source="/img_setting.png" Margin="0,-10,0,0" Stretch="None" MinHeight="60" MinWidth="60"/>
                             <TextBlock Text="История" Margin="10,0,0,0"
                                        Style="{StaticResource font_style}"/>
 
@@ -317,5 +372,7 @@
 
             </StackPanel>
         </Grid>
+
+
     </Grid>
 </Window>

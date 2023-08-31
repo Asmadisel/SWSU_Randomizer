@@ -34,4 +34,9 @@
     <Folder Include="fonts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
+    <PackageReference Include="XamlRadialProgressBar" Version="1.0.3" />
+  </ItemGroup>
+
 </Project>
