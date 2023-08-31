@@ -37,7 +37,7 @@ namespace SWSU_Randomizer
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
             //Установка видимости подсказки
-            if(Tg_Btn.IsChecked== true)
+            if (Tg_Btn.IsChecked== true)
             {
                 tt_randomizer.Visibility= Visibility.Collapsed;
                 tt_history.Visibility= Visibility.Collapsed;
@@ -50,6 +50,8 @@ namespace SWSU_Randomizer
                 tt_settings.Visibility= Visibility.Visible;
             }
         }
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        TimeSpan time;
 
         private void Nav_LV_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -68,7 +70,7 @@ namespace SWSU_Randomizer
 
 
         //Таймер
-        
+
 
         private void Start_button_Click(object sender, RoutedEventArgs e)
         {
@@ -90,33 +92,39 @@ namespace SWSU_Randomizer
                     }
                     else
                     {
-
-                        //Таймер на 7 секунд
-                        var timerstate = new TimerState { Counter = 0 };
-
-                        var counter = 0;
-
-                        //меняем текст кнопки
                         Start_button.Content = "Стоп";
 
-                        
-                      
-                            //Начинаем изменять значение
-                            timer.Tick += new EventHandler(timer_Tick);
-                            timer.Interval = TimeSpan.FromSeconds(0.1);
+                        time = TimeSpan.FromSeconds(140);
+                        dispatcherTimer = new DispatcherTimer();
+                        dispatcherTimer.Interval = TimeSpan.FromSeconds(0.05);
+                        dispatcherTimer.Tick += DispatcherTimer_Tick;
+                        dispatcherTimer.Start();
+                        ////Таймер на 7 секунд
+                        //var timerstate = new TimerState { Counter = 0 };
 
-                            Random rnd = new Random();
-                            timer.Start();
 
-                        //Random rnd = new Random();
-                        //int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
-                        //TextBlockRandom.Text=($"{value}");
+
+                        ////меняем текст кнопки
+                        //
+
+
+
+                        //    //Начинаем изменять значение
+                        //    timer.Tick += new EventHandler(timer_Tick);
+                        //    timer.Interval = TimeSpan.FromSeconds(0.1);
+
+                        //    Random rnd = new Random();
+                        //    timer.Start();
+
+                        ////Random rnd = new Random();
+                        ////int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
+                        ////TextBlockRandom.Text=($"{value}");
 
                     }
                     break;
                 case "Стоп":
                     {
-                       
+
                         Start_button.Content= "Старт";
                         timer.Stop();
 
@@ -125,18 +133,18 @@ namespace SWSU_Randomizer
                     }
                     break;
             }
-           
+
 
         }
         Random rnd = new Random();
         private void timer_Tick(object sender, EventArgs e)
         {
 
-            
-                Random rnd = new Random();
-                int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
-                TextBlockRandom.Text=($"{value}");
-            
+
+            Random rnd = new Random();
+            int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
+            TextBlockRandom.Text=($"{value}");
+
         }
 
 
@@ -149,21 +157,34 @@ namespace SWSU_Randomizer
 
         }
 
-            //int increment = 1;
-            //increment++;
-            //if(increment >= 250)
-            //{
-            //    timer.Stop();
-            //    increment = 0;
-            //}
-            //TextBlockRandom.Text = $"{rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text))}";
+        //int increment = 1;
+        //increment++;
+        //if(increment >= 250)
+        //{
+        //    timer.Stop();
+        //    increment = 0;
+        //}
+        //TextBlockRandom.Text = $"{rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text))}";
 
-            class TimerState
+        class TimerState
         {
             public int Counter;
         }
 
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (time == TimeSpan.Zero) 
+            {    dispatcherTimer.Stop();
+            Start_button.Content= "Старт";}
+             
+            else
+            {
+                time = time.Add(TimeSpan.FromSeconds(-1));
+                int value = rnd.Next(int.Parse(textBox1.Text), int.Parse(textBox2.Text));
+                TextBlockRandom.Text=($"{value}");
+            }
+        }
 
     }
-    }
+}
 

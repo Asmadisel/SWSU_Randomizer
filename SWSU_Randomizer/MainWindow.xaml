@@ -123,11 +123,12 @@
                       HorizontalAlignment="Stretch"  Grid.ColumnSpan="2"></GridSplitter>
 
         <Grid x:Name="topTimer" Background="#FF191F1F" Margin="81,0,0,0">
-            
+            <Image Source="/SwsuWhite.png" Stretch="None" MinWidth="60" MinHeight="60" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5,10,10,0"/>
+
             <TextBlock x:Name="Randomizer_Textblock" TextWrapping="Wrap" Text="Введите диапазон чисел" FontSize="36" Foreground="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
             <!--Круговой progress bar-->
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200" MinHeight="100">
-                <TextBlock x:Name="TextBlockRandom" TextWrapping="Wrap" Text="0000" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="144" Foreground="White"/>
+                <TextBlock x:Name="TextBlockRandom" TextWrapping="Wrap" Text="0000" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="190" Foreground="White"/>
 
 
             </Grid>

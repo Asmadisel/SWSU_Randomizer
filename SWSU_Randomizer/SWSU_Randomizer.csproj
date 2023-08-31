@@ -14,6 +14,7 @@
     <None Remove="img_setting.png" />
     <None Remove="Menu.png" />
     <None Remove="Menu2.png" />
+    <None Remove="SwsuWhite.png" />
     <None Remove="tg_button_mouseOver.png" />
    
   </ItemGroup>
@@ -25,6 +26,7 @@
     <Resource Include="img_setting.png" />
     <Resource Include="Menu.png" />
     <Resource Include="Menu2.png" />
+    <Resource Include="SwsuWhite.png" />
     <Resource Include="tg_button_mouseOver.png" />
    
   </ItemGroup>
@@ -32,10 +34,5 @@
   <ItemGroup>
     <Folder Include="assets\" />
     <Folder Include="fonts\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
-    <PackageReference Include="XamlRadialProgressBar" Version="1.0.3" />
   </ItemGroup>
 </Project>
